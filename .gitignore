@@ -1,5 +1,8 @@
 HELP.md
 .gradle
+.offline-gradle-home/
+/offline-tools/gradle-9.7.1-bin.zip
+/offline-tools/jdk-21.0.7+6/lib/modules
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
