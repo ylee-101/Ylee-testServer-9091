@@ -18,6 +18,10 @@ class Server9091Controller {
         "bad-request" -> response(HttpStatus.BAD_REQUEST, scenario, false, "Invalid mock request")
         "unauthorized" -> response(HttpStatus.UNAUTHORIZED, scenario, false, "Mock authentication failed")
         "server-error" -> response(HttpStatus.INTERNAL_SERVER_ERROR, scenario, false, "Mock server error")
+        "slow-response" -> {
+            Thread.sleep(SLOW_RESPONSE_DELAY_MILLIS)
+            response(HttpStatus.OK, scenario, true, "Mock response delayed by 30 seconds")
+        }
         else -> response(HttpStatus.BAD_REQUEST, scenario, false, "Unknown scenario: $scenario")
     }
 
@@ -34,6 +38,10 @@ class Server9091Controller {
             message = message,
         ),
     )
+
+    companion object {
+        const val SLOW_RESPONSE_DELAY_MILLIS = 30_000L
+    }
 }
 
 data class MockJsonResponse(

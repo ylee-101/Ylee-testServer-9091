@@ -29,4 +29,9 @@ class Server9091ApplicationTests {
 		assertEquals(false, response.body?.success)
 	}
 
+	@Test
+	fun `slow response scenario is configured for 30 seconds`() {
+		assertEquals(30_000L, Server9091Controller.SLOW_RESPONSE_DELAY_MILLIS)
+	}
+
 }
